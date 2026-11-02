@@ -2712,3 +2712,20 @@ a:hover .link-icon-down {
 .privacy-dialog-body .privacy-warning { padding: 13px; background: #fff5dd; border-left: 3px solid #cda978; }
 .privacy-dialog-footer { border-top: 1px solid #dce4e8; justify-content: flex-end; }
 .privacy-dialog-footer .button { cursor: pointer; }
+
+
+/* El enlace de registro usa exactamente el estilo de los demás enlaces del menú. */
+.main-nav a[href$="#prerregistro"]:not(.nav-cta) {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.main-nav a[href$="#prerregistro"]:not(.nav-cta):hover { color: #956d42; }
+.video-unmute-button { display: inline-flex; margin-top: 15px; cursor: pointer; }
