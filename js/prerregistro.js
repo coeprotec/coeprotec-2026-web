@@ -109,3 +109,27 @@
   observer.observe(video);
   document.addEventListener('pointerdown', () => { if (visible) attempt(); }, { passive: true });
 })();
+
+
+// El sonido automático está restringido en muchos navegadores: ofrecer activación explícita.
+(() => {
+  const video = document.getElementById('video-oficial-2026');
+  const button = document.getElementById('video-activar-sonido');
+  if (!video || !button) return;
+  button.addEventListener('click', async () => {
+    video.muted = false;
+    video.volume = 1;
+    try {
+      await video.play();
+      button.textContent = 'Silenciar video';
+      button.onclick = () => {
+        video.muted = true;
+        button.textContent = 'Activar sonido 🔊';
+        button.onclick = null;
+      };
+    } catch (_) {
+      video.muted = true;
+      button.textContent = 'Activa el sonido en los controles del video';
+    }
+  });
+})();
