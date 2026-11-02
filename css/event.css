@@ -2729,3 +2729,17 @@ a:hover .link-icon-down {
 }
 .main-nav a[href$="#prerregistro"]:not(.nav-cta):hover { color: #956d42; }
 .video-unmute-button { display: inline-flex; margin-top: 15px; cursor: pointer; }
+
+/* Footer institucional: composición del rediseño Gemini con la paleta original de COEPROTEC */
+.footer { border-top: 3px solid var(--teal); padding-top: 72px; }
+.footer-grid { grid-template-columns: minmax(280px, 1.7fr) minmax(160px, 1fr) minmax(180px, 1fr); gap: clamp(30px, 5vw, 76px); }
+.footer-brand { display: inline-flex; align-items: center; gap: 14px; font-size: 30px; line-height: 1; margin-bottom: 16px; }
+.footer-brand img { width: 50px; height: 50px; object-fit: contain; flex: 0 0 50px; }
+.footer-brand small { margin-top: 8px; }
+.footer-grid > div:not(:first-child) > span { font-size: 11px; }
+.footer-grid > div:not(:first-child) { gap: 14px; font-size: 13px; }
+.footer a { color: #cbd8dd; transition: color .2s ease; }
+.footer a:hover { color: var(--gold); }
+.footer-bottom { color: #a9bdc8; }
+@media (max-width: 850px) { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 38px; } .footer-grid > div:first-child { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .footer { padding-top: 54px; } .footer-grid { grid-template-columns: 1fr; gap: 30px; } .footer-grid > div:first-child { grid-column: auto; } .footer-bottom { flex-direction: column; gap: 8px; } }
