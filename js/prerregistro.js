@@ -49,3 +49,63 @@
     }
   });
 })();
+
+
+// Modal de privacidad: la aceptación del documento no marca automáticamente el consentimiento.
+(() => {
+  const dialog = document.getElementById('privacy-dialog');
+  const body = document.getElementById('privacy-dialog-body');
+  if (!dialog || !body) return;
+  let loaded = false;
+  let lastTrigger = null;
+  document.querySelectorAll('[data-open-privacy]').forEach(link => link.addEventListener('click', async event => {
+    event.preventDefault();
+    event.stopPropagation();
+    lastTrigger = link;
+    dialog.showModal();
+    if (loaded) return;
+    try {
+      const response = await fetch('privacidad.html', { credentials: 'same-origin' });
+      if (!response.ok) throw new Error('No se pudo cargar el documento');
+      const documentHTML = new DOMParser().parseFromString(await response.text(), 'text/html');
+      const main = documentHTML.querySelector('.privacy-main');
+      if (!main) throw new Error('Documento no disponible');
+      main.querySelector('a[href*="#prerregistro"]')?.remove();
+      main.querySelector('h1')?.remove();
+      body.replaceChildren(...Array.from(main.children).map(node => document.importNode(node, true)));
+      loaded = true;
+    } catch (error) {
+      body.textContent = 'No se pudo cargar la información. Puedes consultarla en la página de privacidad.';
+      const fallback = document.createElement('a');
+      fallback.href = 'privacidad.html';
+      fallback.textContent = 'Ver información de privacidad';
+      body.append(document.createElement('p'), fallback);
+    }
+  }));
+  dialog.querySelectorAll('[data-close-privacy]').forEach(button => button.addEventListener('click', () => dialog.close()));
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', () => lastTrigger?.focus());
+})();
+
+// Reproducir al entrar en pantalla. Audio solo cuando el navegador permita reproducción audible.
+(() => {
+  const video = document.getElementById('video-oficial-2026');
+  if (!video || !('IntersectionObserver' in window)) return;
+  let visible = false;
+  const attempt = async () => {
+    if (!visible) return;
+    try {
+      video.muted = false;
+      await video.play();
+    } catch (_) {
+      video.muted = true;
+      video.play().catch(() => {});
+    }
+  };
+  const observer = new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    if (visible) attempt(); else video.pause();
+  }, { threshold: 0.55 });
+  observer.observe(video);
+  document.addEventListener('pointerdown', () => { if (visible) attempt(); }, { passive: true });
+})();
