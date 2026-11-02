@@ -162,7 +162,7 @@
             <span>PRESENTACIÓN OFICIAL</span>
             <span>COEPROTEC 2026</span>
           </div>
-          <video autoplay muted loop playsinline controls preload="metadata" poster="img/videos/poster-2026.jpg" aria-label="Video oficial de presentación COEPROTEC 2026">
+          <video id="video-oficial-2026" autoplay muted loop playsinline controls preload="metadata" poster="img/videos/poster-2026.jpg" aria-label="Video oficial de presentación COEPROTEC 2026">
             <source src="videos/coeprotec-presentacion-2026.mp4" type="video/mp4">
             Tu navegador no admite reproducción de video HTML5.
           </video>
@@ -271,7 +271,7 @@
     <section class="section prereg-section" id="prerregistro" aria-labelledby="prerregistro-titulo">
       <div class="container prereg-grid">
         <div class="prereg-copy">
-          <p class="section-index">COMUNIDAD COEPROTEC · PRERREGISTRO</p>
+          <p class="section-index">COMUNIDAD COEPROTEC · INSCRIPCIÓN</p>
           <h2 class="section-title" id="prerregistro-titulo">Conecta con nuestros <em>próximos eventos.</em></h2>
           <p>Regístrate para recibir información sobre las próximas oportunidades de formación, ponencias y eventos del Congreso Económico de Profesionales y Técnicos – COEPROTEC.</p>
           <ul class="prereg-benefits">
@@ -279,12 +279,12 @@
             <li>Información sobre programas, especialistas invitados y modalidades de participación.</li>
             <li>Orientación directa para profesionales, equipos e instituciones aliadas.</li>
           </ul>
-          <p class="prereg-legal-meta"><strong>Responsable del tratamiento:</strong> CONSULTORIA EMPRESARIAL P &amp; M S.A.C. (RUC 20523027655). Conservación máxima: 12 meses desde la última interacción. Derechos ARCO: <a class="text-link" href="mailto:admin.general@coeprotec.com">admin.general@coeprotec.com</a> · <a class="text-link" href="privacidad.html">Política de Privacidad (2026-11-02-v1)</a>.</p>
+          <p class="prereg-legal-meta"><a class="text-link" href="privacidad.html" data-open-privacy>Consulta nuestra Política de Privacidad ↗</a></p>
         </div>
 
         <div class="prereg-card">
-          <span class="prereg-badge"><span class="prereg-badge-dot" aria-hidden="true"></span> FORMULARIO DE PRERREGISTRO</span>
-          <h3>¿Te interesa participar?</h3>
+          <span class="prereg-badge"><span class="prereg-badge-dot" aria-hidden="true"></span> REGÍSTRATE</span>
+          <h3>Únete a COEPROTEC</h3>
           <p>Completa tus datos para mantenerte informado sobre nuestros programas y próximos encuentros. Los campos con (*) son obligatorios.</p>
 
           <form class="prereg-form" id="preregistro-form" data-privacy-version="2026-11-02-v1" novalidate>
@@ -317,7 +317,7 @@
               <div class="prereg-consents">
                 <label class="prereg-check" for="prereg-consentimiento">
                   <input id="prereg-consentimiento" name="consentimiento" type="checkbox" required>
-                  <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">Política de Privacidad (versión 2026-11-02-v1)</a> para la gestión de mi prerregistro. <strong>(Obligatorio *)</strong></span>
+                  <span>He leído y acepto la <a href="privacidad.html" data-open-privacy>Política de Privacidad</a> para la gestión de mi prerregistro. <strong>(Obligatorio *)</strong></span>
                 </label>
                 <label class="prereg-check" for="prereg-marketing">
                   <input id="prereg-marketing" name="marketing" type="checkbox">
@@ -331,7 +331,7 @@
 
               <div class="prereg-card-actions">
                 <button class="button button-gold" type="submit">
-                  Enviar prerregistro
+                  Registrarme
                   <svg class="link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
                 </button>
                 <a class="button button-outline" href="contacto.html">Solicitar información</a>
@@ -391,5 +391,11 @@
       <span>Perú</span>
     </div>
   </footer>
+
+  <dialog id="privacy-dialog" class="privacy-dialog" aria-labelledby="privacy-dialog-title">
+    <div class="privacy-dialog-inner"><div class="privacy-dialog-header"><h2 id="privacy-dialog-title">Política de Privacidad</h2><button type="button" class="privacy-dialog-close" aria-label="Cerrar" data-close-privacy>×</button></div>
+      <div id="privacy-dialog-body" class="privacy-dialog-body" tabindex="0"><p>Cargando información sobre privacidad…</p></div>
+      <div class="privacy-dialog-footer"><button type="button" class="button button-gold" data-close-privacy>Aceptar y cerrar</button></div></div>
+  </dialog>
 </body>
 </html>
