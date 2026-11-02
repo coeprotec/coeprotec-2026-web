@@ -3,42 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0A1B33">
+  <meta name="theme-color" content="#071e34">
   <meta name="robots" content="index,follow">
   <meta name="description" content="Congreso Económico de Profesionales y Técnicos – COEPROTEC: formación continua, capacitación profesional, eventos académicos y soluciones educativas.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="COEPROTEC">
   <meta property="og:title" content="Congreso Económico de Profesionales y Técnicos – COEPROTEC">
-  <meta property="og:description" content="Explora próximos eventos, conoce las soluciones de capacitación y revisa la trayectoria de COEPROTEC.">
+  <meta property="og:description" content="Explora próximos eventos y conoce las soluciones de capacitación de COEPROTEC.">
   <meta property="og:url" content="https://www.coeprotec.com/">
   <meta property="og:image" content="https://www.coeprotec.com/img/og-coeprotec.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <title>Congreso Económico de Profesionales y Técnicos – COEPROTEC | COEPROTEC</title>
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-  <link rel="preload" href="fonts/manrope-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/img/logo-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="preload" href="fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dm-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/event.css?v=20261102b">
-  <script src="js/events-data.js?v=20261102b" defer></script>
-  <script src="js/event.js?v=20261102b" defer></script>
-  <script src="js/redes-oficiales.js?v=20261102b" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/event.css?v=20261102d">
+  <script src="js/events-data.js?v=20261102d" defer></script>
+  <script src="js/event.js?v=20261102d" defer></script>
+  <script src="js/prerregistro.js?v=20261102d" defer></script>
+  <script src="js/redes-oficiales.js?v=20261102d" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <link rel="canonical" href="https://www.coeprotec.com/">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Congreso Económico de Profesionales y Técnicos – COEPROTEC",
-    "alternateName": "COEPROTEC",
+    "name": "COEPROTEC",
+    "legalName": "Congreso Económico de Profesionales y Técnicos – COEPROTEC",
     "url": "https://www.coeprotec.com/",
-    "logo": "https://www.coeprotec.com/img/coeprotec-logo-480.png",
-    "sameAs": [
-      "https://www.facebook.com/profile.php?id=61595371786875",
-      "https://www.instagram.com/coeprotec/?hl=es",
-      "https://www.tiktok.com/@coeprotec",
-      "https://x.com/coeprotec84906",
-      "https://www.youtube.com/@Coeprotec"
-    ]
+    "logo": "https://www.coeprotec.com/img/coeprotec-logo-enhanced.png",
+    "image": "https://www.coeprotec.com/img/og-coeprotec.jpg",
+    "description": "Iniciativa orientada a la formación continua, la capacitación técnica y profesional, eventos académicos y soluciones educativas en el Perú.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lima",
+      "addressCountry": "PE"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "telephone": "+51-971-947-284",
+      "areaServed": "PE",
+      "availableLanguage": ["es"]
+    }
   }
   </script>
 </head>
@@ -47,7 +60,7 @@
 
   <div class="announcement">
     <div class="container">
-      <span class="announcement-badge"><span class="announcement-dot" aria-hidden="true"></span> COEPROTEC · FORMACIÓN CONTINUA</span>
+      <span>COEPROTEC · FORMACIÓN CONTINUA</span>
       <span>CONOCIMIENTO PARA SEGUIR AVANZANDO</span>
     </div>
   </div>
@@ -56,9 +69,9 @@
     <div class="container nav-shell">
       <a class="brand" href="index.html" aria-label="COEPROTEC, ir al inicio">
         <span class="brand-symbol" aria-hidden="true">
-          <img src="img/coeprotec-isotipo.png" alt="" width="38" height="38">
+          <img src="img/coeprotec-logo-enhanced.png" alt="" width="150" height="67">
         </span>
-        <span class="brand-text">COEPROTEC<small>CONGRESO ECONÓMICO</small></span>
+        <span>COEPROTEC<small>CONGRESO ECONÓMICO</small></span>
       </a>
       <button class="menu-button" id="menu-button" type="button" onclick="toggleMenu()" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
         <span></span><span></span><span></span>
@@ -73,81 +86,59 @@
         <a href="contacto.html">Contáctanos</a>
         <a class="nav-cta" href="https://wa.me/51971947284?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20COEPROTEC" target="_blank" rel="noopener noreferrer">
           Solicitar información
-          <svg class="link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
+          <svg class="link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
         </a>
       </nav>
     </div>
   </header>
 
   <main id="contenido">
-    <!-- Hero Principal: Composición Editorial + Evento Vigente -->
+    <!-- Hero Principal: Identidad Original + Tarjeta de Evento Vigente a la Derecha -->
     <section class="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="container hero-inner">
         <div class="hero-copy">
           <p class="eyebrow"><span class="eyebrow-line"></span> CONGRESO ECONÓMICO DE PROFESIONALES Y TÉCNICOS – COEPROTEC</p>
-          <h1>El conocimiento abre <em>nuevas rutas.</em></h1>
+          <h1>El conocimiento<br>abre <em>nuevas rutas.</em></h1>
           <p class="hero-intro">Creamos espacios de capacitación y encuentro para profesionales, técnicos y organizaciones que quieren llevar lo aprendido a la práctica.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#soluciones">
+            <a class="button button-gold" href="#soluciones">
               Conocer nuestros servicios
-              <svg class="link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
+              <svg class="link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
             </a>
-            <a class="button button-gold" href="#prerregistro">
-              Prerregistro e información
-              <svg class="link-icon link-icon-down" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M12 7.5v9m-4-4 4 4 4-4"/></svg>
-            </a>
-            <a class="text-link" href="#nosotros">¿Qué es COEPROTEC? ↓</a>
+            <a class="button button-outline-light" href="inscripciones.html">Próximos eventos</a>
+            <a class="button button-outline-light" href="#prerregistro">Prerregistro</a>
           </div>
-          <div class="hero-pillars">
-            <div class="hero-pillar">
-              <span class="hero-pillar-icon" aria-hidden="true">01</span>
-              <div>
-                <strong>Aprender</strong>
-                <span>Actualización técnica y especializada</span>
-              </div>
-            </div>
-            <div class="hero-pillar">
-              <span class="hero-pillar-icon" aria-hidden="true">02</span>
-              <div>
-                <strong>Compartir</strong>
-                <span>Encuentros académicos y diálogo</span>
-              </div>
-            </div>
-            <div class="hero-pillar">
-              <span class="hero-pillar-icon" aria-hidden="true">03</span>
-              <div>
-                <strong>Aplicar</strong>
-                <span>Soluciones orientadas a la práctica</span>
-              </div>
-            </div>
+          <div class="hero-quick-links">
+            <a class="text-link light" href="#nosotros">
+              ¿Qué es COEPROTEC?
+              <svg class="link-icon link-icon-down" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M12 7.5v9m-4-4 4 4 4-4"/></svg>
+            </a>
+            <a class="text-link light" href="#video-2026">Presentación 2026 ↓</a>
           </div>
         </div>
 
-        <div class="hero-visual-stack">
-          <div class="hero-orbit-ring" aria-hidden="true"></div>
-          <figure class="hero-photo-frame">
-            <img src="img/editorial/conferencia-auditorio.jpg" alt="Fotografía ilustrativa de un auditorio durante un encuentro académico y profesional" width="1200" height="750" fetchpriority="high">
-            <figcaption class="hero-photo-caption">
-              <span>Formación Continua · Encuentros</span>
-              <span>Imagen ilustrativa</span>
-            </figcaption>
-          </figure>
-          <aside class="hero-showcase" aria-label="Próximo encuentro en agenda">
-            <div class="hero-showcase-head">
-              <span class="hero-showcase-badge">Evento Aliado · Auspiciador</span>
-              <span class="hero-showcase-date">17 NOV 2026 · 18:30</span>
-            </div>
-            <div class="hero-showcase-body">
-              <h2>Contratación por emergencia y retos actuales en las Obras por Impuestos (OxI)</h2>
-              <p>Organiza: Escuela de Postgrado UPC · Presencial en Av. General Salaverry 2255, San Isidro.</p>
-            </div>
-            <div class="hero-showcase-foot">
-              <a class="text-link" href="ponentes.html#epg-upc">Ver ponentes y mesas ↗</a>
-              <a class="text-link" href="inscripciones.html">Ver agenda ↗</a>
-            </div>
-          </aside>
-        </div>
+        <aside class="hero-event-card" id="hero-event-card" aria-label="Evento vigente en agenda">
+          <div class="hero-event-top">
+            <span class="hero-event-badge"><span class="hero-event-dot" aria-hidden="true"></span> EVENTO ALIADO · AUSPICIADOR</span>
+            <span class="hero-event-date">17 de noviembre de 2026 · 18:30 h</span>
+          </div>
+          <h2 class="hero-event-title">Contratación por emergencia y retos actuales en las Obras por Impuestos (OxI)</h2>
+          <ul class="hero-event-meta">
+            <li>
+              <strong>Organizador y participación</strong>
+              <span>Organiza: Escuela de Postgrado UPC · COEPROTEC: Auspiciador</span>
+            </li>
+            <li>
+              <strong>Modalidad y ubicación</strong>
+              <span>Presencial · Av. General Salaverry 2255, San Isidro</span>
+            </li>
+          </ul>
+          <div class="hero-event-actions">
+            <a class="button button-gold button-sm" href="inscripciones.html">Consultar agenda ↗</a>
+            <a class="button button-outline-light button-sm" href="ponentes.html#epg-upc">Ver ponentes y mesas ↗</a>
+          </div>
+        </aside>
       </div>
       <div class="hero-bottom container">
         <span>EDUCACIÓN · EXPERIENCIAS · CONEXIONES</span>
@@ -155,47 +146,41 @@
       </div>
     </section>
 
-    <!-- Sección Destacada: Presentación Oficial 2026 -->
+    <!-- Video Institucional 2026 -->
     <section class="section edition-video" id="video-2026" aria-labelledby="video2026-title">
-      <div class="container">
-        <div class="edition-video-shell">
-          <div class="edition-video-layout">
-            <div class="edition-video-copy">
-              <p class="section-index">PRESENTACIÓN OFICIAL · EDICIÓN 2026</p>
-              <h2 class="section-title" id="video2026-title">Conoce la visión de <em>COEPROTEC 2026.</em></h2>
-              <p>Descubre nuestro material audiovisual oficial de presentación para la edición 2026 del Congreso Económico de Profesionales y Técnicos – COEPROTEC.</p>
-              <p>El video se reproduce automáticamente en modo silencioso cuando el navegador lo permite; puedes activar el audio, pausarlo o reiniciar la reproducción desde los controles integrados.</p>
-              <div class="edition-video-highlights">
-                <div class="edition-video-highlight">
-                  <strong>Proyección 2026</strong>
-                  <span>Nuevos encuentros de actualización técnica y profesional</span>
-                </div>
-                <div class="edition-video-highlight">
-                  <strong>Trayectoria 2025</strong>
-                  <span>Archivo histórico con flyer oficial, 6 ponentes y videos</span>
-                </div>
-              </div>
-              <div class="edition-video-actions">
-                <a class="button button-gold" href="coeprotec-2025.html">
-                  Explorar la edición 2025
-                  <svg class="link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
-                </a>
-                <a class="text-link light" href="#prerregistro">Ir al prerregistro informativo ↓</a>
-              </div>
+      <div class="container edition-video-layout">
+        <div class="edition-video-copy">
+          <p class="section-index">COEPROTEC · EDICIÓN 2026</p>
+          <h2 class="section-title" id="video2026-title">Conoce la edición <em>2026.</em></h2>
+          <p>Descubre nuestro material audiovisual de presentación para la edición 2026 del Congreso Económico de Profesionales y Técnicos – COEPROTEC.</p>
+          <p>El video se reproduce automáticamente en modo silencioso cuando el navegador lo permite y cuenta con controles completos para activar el audio, pausar o repetir la reproducción.</p>
+          <div class="edition-video-highlights">
+            <div class="edition-video-highlight">
+              <strong>Proyección 2026</strong>
+              <span>Encuentros académicos y programas de actualización profesional</span>
             </div>
-            <div class="edition-video-StageWrap">
-              <div class="edition-video-player">
-                <div class="edition-video-bar">
-                  <span>Presentación Oficial</span>
-                  <span>COEPROTEC 2026</span>
-                </div>
-                <video autoplay muted loop playsinline controls preload="metadata" poster="img/videos/poster-2026.jpg" aria-label="Video oficial de presentación COEPROTEC 2026">
-                  <source src="videos/coeprotec-presentacion-2026.mp4" type="video/mp4">
-                  Tu navegador no admite reproducción de video HTML5.
-                </video>
-              </div>
+            <div class="edition-video-highlight">
+              <strong>Trayectoria 2025</strong>
+              <span>Archivo histórico con los 6 ponentes y registros en YouTube</span>
             </div>
           </div>
+          <div class="edition-video-actions">
+            <a class="button button-dark" href="coeprotec-2025.html">
+              Explorar la edición 2025
+              <svg class="link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
+            </a>
+            <a class="button button-outline" href="#prerregistro">Ir al prerregistro</a>
+          </div>
+        </div>
+        <div class="edition-video-player">
+          <div class="edition-video-bar">
+            <span>PRESENTACIÓN OFICIAL</span>
+            <span>COEPROTEC 2026</span>
+          </div>
+          <video autoplay muted loop playsinline controls preload="metadata" poster="img/videos/poster-2026.jpg" aria-label="Video oficial de presentación COEPROTEC 2026">
+            <source src="videos/coeprotec-presentacion-2026.mp4" type="video/mp4">
+            Tu navegador no admite reproducción de video HTML5.
+          </video>
         </div>
       </div>
     </section>
@@ -206,13 +191,6 @@
         <div>
           <p class="section-index">SOBRE COEPROTEC</p>
           <h2 class="section-title">Un punto de encuentro para <em>seguir aprendiendo.</em></h2>
-          <figure class="intro-visual-card">
-            <img src="img/editorial/dialogo-corporativo.jpg" alt="Fotografía ilustrativa de profesionales dialogando en un espacio de formación y networking" loading="lazy" width="960" height="600">
-            <figcaption>
-              <span>Comunidad de especialistas, técnicos e instituciones</span>
-              <span>Imagen ilustrativa</span>
-            </figcaption>
-          </figure>
         </div>
         <div class="intro-text reading-card">
           <span class="reading-card-label">¿QUÉ ES COEPROTEC?</span>
@@ -224,7 +202,7 @@
       </div>
     </section>
 
-    <!-- Qué hacemos: Tarjetas con Fotografías Editoriales -->
+    <!-- Qué hacemos -->
     <section class="section services-section" id="soluciones">
       <div class="container">
         <div class="section-head">
@@ -236,102 +214,25 @@
         </div>
         <div class="service-grid">
           <article class="service-card">
-            <div class="service-media">
-              <img src="img/editorial/networking-profesional.jpg" alt="Fotografía ilustrativa de sesión de actualización profesional" loading="lazy" width="600" height="380">
-              <span class="service-mark">01</span>
-            </div>
-            <div class="service-body">
-              <h3>Formación y especialización</h3>
-              <p>Cursos de actualización, talleres, seminarios y programas para fortalecer conocimientos técnicos y profesionales.</p>
-            </div>
+            <span class="service-mark">01</span>
+            <h3>Formación y especialización</h3>
+            <p>Cursos de actualización, talleres, seminarios y programas para fortalecer conocimientos técnicos y profesionales.</p>
           </article>
           <article class="service-card">
-            <div class="service-media">
-              <img src="img/editorial/exposicion-academica.jpg" alt="Fotografía ilustrativa de conferencia académica" loading="lazy" width="600" height="380">
-              <span class="service-mark">02</span>
-            </div>
-            <div class="service-body">
-              <h3>Eventos académicos</h3>
-              <p>Conferencias, congresos y espacios de diálogo donde especialistas y participantes intercambian ideas y experiencias.</p>
-            </div>
+            <span class="service-mark">02</span>
+            <h3>Eventos académicos</h3>
+            <p>Conferencias, congresos y espacios de diálogo donde especialistas y participantes intercambian ideas y experiencias.</p>
           </article>
           <article class="service-card">
-            <div class="service-media">
-              <img src="img/editorial/capacitacion-equipos.jpg" alt="Fotografía ilustrativa de capacitación para equipos de trabajo" loading="lazy" width="600" height="380">
-              <span class="service-mark">03</span>
-            </div>
-            <div class="service-body">
-              <h3>Capacitación para equipos</h3>
-              <p>Propuestas de formación corporativa e institucional adaptadas a las necesidades de cada organización.</p>
-            </div>
+            <span class="service-mark">03</span>
+            <h3>Capacitación para equipos</h3>
+            <p>Propuestas de formación corporativa e institucional adaptadas a las necesidades de cada organización.</p>
           </article>
           <article class="service-card">
-            <div class="service-media">
-              <img src="img/editorial/seminario-formacion.jpg" alt="Fotografía ilustrativa de seminario y soluciones educativas" loading="lazy" width="600" height="380">
-              <span class="service-mark">04</span>
-            </div>
-            <div class="service-body">
-              <h3>Soluciones educativas</h3>
-              <p>Apoyo en contenidos, diseño de programas y proyectos de aprendizaje en modalidades presenciales o virtuales.</p>
-            </div>
+            <span class="service-mark">04</span>
+            <h3>Soluciones educativas</h3>
+            <p>Apoyo en contenidos, diseño de programas y proyectos de aprendizaje en modalidades presenciales o virtuales.</p>
           </article>
-        </div>
-        <p class="editorial-credit">Fotografías de carácter ilustrativo (licencia abierta Unsplash).</p>
-      </div>
-    </section>
-
-    <!-- Trayectoria y Edición 2025 en Portada -->
-    <section class="section home-heritage-section" id="trayectoria-2025" aria-labelledby="home-2025-title">
-      <div class="container home-heritage-grid">
-        <div>
-          <p class="section-index">TRAYECTORIA · ARCHIVO 2025</p>
-          <h2 class="section-title" id="home-2025-title">Nuestra primera edición: <em>COEPROTEC 2025.</em></h2>
-          <p>El archivo institucional del proyecto conserva la memoria del Primer Congreso Económico de Profesionales y Técnicos bajo el tema <strong>«Perú en Crecimiento: Obras por Impuestos»</strong>.</p>
-          <div class="home-heritage-badges">
-            <span>27 de noviembre de 2025 · 6:30 p. m.</span>
-            <span>Miraflores Park Hotel · Lima</span>
-            <span>6 ponentes en el flyer oficial</span>
-          </div>
-          <div class="home-heritage-speakers-mini">
-            <small>Ponentes anunciados en el flyer 2025</small>
-            <div class="home-heritage-pills">
-              <span>Jorge Bravo Cucci</span>
-              <span>Carlos Moreano Valdivia</span>
-              <span>Edwin Mendoza Cárdenas</span>
-              <span>Sergio Tafur</span>
-              <span>Víctor Jaime Farach</span>
-              <span>Mg. Víctor Patiño Coello</span>
-            </div>
-          </div>
-          <div class="hero-actions">
-            <a class="button button-dark" href="coeprotec-2025.html">
-              Ver memoria y videos de 2025
-              <svg class="link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
-            </a>
-            <a class="text-link" href="coeprotec-2025.html#videos">Ir a la videoteca 2025 ↗</a>
-          </div>
-        </div>
-
-        <div class="home-heritage-visual">
-          <a class="home-heritage-flyer" href="coeprotec-2025.html" aria-label="Ver flyer oficial y archivo de COEPROTEC 2025">
-            <img src="img/eventos/coeprotec-flyer-2025.jpg" alt="Flyer oficial del Primer Congreso Económico COEPROTEC 2025" loading="lazy" width="540" height="720">
-          </a>
-          <div class="home-heritage-videos-stack">
-            <a class="home-heritage-vid-card" href="coeprotec-2025.html#videos">
-              <div class="home-heritage-vid-thumb">
-                <img src="img/videos/yt-GSlIjaFkXwM.jpg" alt="Miniatura del video 1 del archivo audiovisual 2025" loading="lazy" width="480" height="360">
-                <span>Video 01 ▶</span>
-              </div>
-              <p>Registro audiovisual · Edición 2025</p>
-            </a>
-            <a class="home-heritage-vid-card" href="coeprotec-2025.html#videos">
-              <div class="home-heritage-vid-thumb">
-                <img src="img/videos/yt-5ArwoqUiJdM.jpg" alt="Miniatura del video 3 del archivo audiovisual 2025" loading="lazy" width="480" height="360">
-                <span>Video 03 ▶</span>
-              </div>
-              <p>Transmisión registrada · Archivo 2025</p>
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -341,25 +242,23 @@
       <div class="container agenda-grid">
         <div>
           <p class="section-index">AGENDA COEPROTEC</p>
-          <h2 class="section-title">Lo que viene <em>se construye juntos.</em></h2>
-          <p class="agenda-intro">Aquí encontrarás los próximos eventos organizados por COEPROTEC y actividades de instituciones aliadas, con sus fechas, programas y enlaces de participación cuando sean anunciados.</p>
+          <h2 class="section-title">Lo que viene<br><em>se construye juntos.</em></h2>
+          <p class="agenda-intro reading-summary">Aquí encontrarás los próximos eventos, sus fechas, programas y enlaces de inscripción cuando sean anunciados.</p>
           <a class="button button-dark" href="inscripciones.html">
             Ver agenda completa
-            <svg class="link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
+            <svg class="link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
           </a>
         </div>
         <div class="agenda-panel">
           <span class="agenda-panel-label">PRÓXIMOS EVENTOS / 2026</span>
           <div class="agenda-line"></div>
           <div class="agenda-empty" id="agenda-home-content">
-            <span class="event-type event-type-light">EVENTO ALIADO · PARTICIPACIÓN INSTITUCIONAL</span>
-            <span class="agenda-next-date">17 de noviembre de 2026</span>
-            <h3>Contratación por emergencia y retos actuales en las Obras por Impuestos (OxI)</h3>
-            <p>Encuentro académico de la Escuela de Postgrado UPC, con mesas sobre contratación por emergencia y retos de las Obras por Impuestos. COEPROTEC figura entre los auspiciadores del afiche.</p>
-            <a class="text-link light" href="inscripciones.html">Ver agenda y detalles ↗</a>
+            <span class="agenda-empty-icon" aria-hidden="true">↗</span>
+            <h3>Próximamente</h3>
+            <p>Aún no hay eventos de COEPROTEC con inscripción abierta. Vuelve a consultar la agenda para conocer las siguientes actividades.</p>
           </div>
           <div class="agenda-panel-foot">
-            <span>AGENDA ACTUALIZADA</span>
+            <span>AGENDA EN ACTUALIZACIÓN</span>
             <span>COEPROTEC ↗</span>
           </div>
         </div>
@@ -377,39 +276,85 @@
           <p>Si deseas proponer un tema, organizar una actividad, solicitar formación para tu equipo u ofrecer una alianza, conversemos. Cuéntanos qué necesitas y te orientaremos por nuestro canal de contacto.</p>
           <a class="text-link" href="https://wa.me/51971947284?text=Hola%2C%20quiero%20proponer%20una%20colaboraci%C3%B3n%20con%20COEPROTEC" target="_blank" rel="noopener noreferrer">
             Proponer una colaboración
-            <svg class="link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
+            <svg class="link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Prerregistro Institucional (Estado Próximamente — Sin captación activa de datos) -->
+    <!-- Prerregistro COEPROTEC -->
     <section class="section prereg-section" id="prerregistro" aria-labelledby="prerregistro-titulo">
       <div class="container prereg-grid">
         <div class="prereg-copy">
-          <p class="section-index">PRERREGISTRO INSTITUCIONAL · COMUNIDAD COEPROTEC</p>
+          <p class="section-index">COMUNIDAD COEPROTEC · PRERREGISTRO</p>
           <h2 class="section-title" id="prerregistro-titulo">Conecta con nuestros <em>próximos eventos.</em></h2>
-          <p>Recibe información oportuna sobre próximos eventos, ponencias, agenda e inscripciones del Congreso Económico de Profesionales y Técnicos – COEPROTEC.</p>
+          <p>Regístrate para recibir información sobre las próximas oportunidades de formación, ponencias y eventos del Congreso Económico de Profesionales y Técnicos – COEPROTEC.</p>
           <ul class="prereg-benefits">
             <li>Avisos de nuevas convocatorias, seminarios y congresos académicos.</li>
             <li>Información sobre programas, especialistas invitados y modalidades de participación.</li>
-            <li>Canal directo para consultas de equipos, empresas e instituciones aliadas.</li>
+            <li>Orientación directa para profesionales, equipos e instituciones aliadas.</li>
           </ul>
+          <p class="prereg-legal-meta"><strong>Responsable del tratamiento:</strong> CONSULTORIA EMPRESARIAL P &amp; M S.A.C. (RUC 20523027655). Conservación máxima: 12 meses desde la última interacción. Derechos ARCO: <a class="text-link" href="mailto:admin.general@coeprotec.com">admin.general@coeprotec.com</a> · <a class="text-link" href="privacidad.html">Política de Privacidad (2026-11-02-v1)</a>.</p>
         </div>
+
         <div class="prereg-card">
-          <span class="prereg-badge"><span class="prereg-badge-dot" aria-hidden="true"></span> PRÓXIMAMENTE · REGISTRO EN LÍNEA</span>
-          <h3>¿Te interesa participar en las siguientes actividades?</h3>
-          <p>El formulario web de prerregistro se habilitará próximamente tras completar las validaciones legales y técnicas. Mientras tanto, nuestro equipo atiende todas las solicitudes directamente por nuestros canales oficiales.</p>
-          <div class="prereg-card-actions">
-            <a class="button button-gold" href="contacto.html">
-              Solicitar información
-              <svg class="link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
-            </a>
-            <a class="button button-outline" href="https://wa.me/51971947284?text=Hola%2C%20quisiera%20recibir%20informaci%C3%B3n%20sobre%20los%20pr%C3%B3ximos%20eventos%20de%20COEPROTEC" target="_blank" rel="noopener noreferrer">
-              Consultar por WhatsApp
-            </a>
-          </div>
-          <p class="prereg-status">No se recopilan ni almacenan datos personales en esta web mientras el prerregistro en línea permanece en estado «Próximamente».</p>
+          <span class="prereg-badge"><span class="prereg-badge-dot" aria-hidden="true"></span> FORMULARIO DE PRERREGISTRO</span>
+          <h3>¿Te interesa participar?</h3>
+          <p>Completa tus datos para mantenerte informado sobre nuestros programas y próximos encuentros. Los campos con (*) son obligatorios.</p>
+
+          <form class="prereg-form" id="preregistro-form" data-privacy-version="2026-11-02-v1" novalidate>
+            <fieldset>
+              <input type="hidden" name="consentimientoVersion" value="2026-11-02-v1">
+              <div class="prereg-fields">
+                <div class="prereg-field full">
+                  <label for="prereg-nombre">Nombre completo <span>*</span></label>
+                  <input id="prereg-nombre" name="nombre" type="text" required minlength="3" maxlength="100" autocomplete="name" placeholder="Nombres y apellidos">
+                </div>
+                <div class="prereg-field">
+                  <label for="prereg-correo">Correo electrónico <span>*</span></label>
+                  <input id="prereg-correo" name="correo" type="email" required maxlength="254" autocomplete="email" placeholder="nombre@correo.com">
+                </div>
+                <div class="prereg-field">
+                  <label for="prereg-telefono">Teléfono (opcional)</label>
+                  <input id="prereg-telefono" name="telefono" type="tel" maxlength="20" pattern="[+0-9 ()-]{7,20}" autocomplete="tel" placeholder="+51 999 999 999">
+                </div>
+                <div class="prereg-field full">
+                  <label for="prereg-interes">Área de interés principal <span>*</span></label>
+                  <select id="prereg-interes" name="interes" required>
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="eventos">Próximos eventos y congresos académicos</option>
+                    <option value="capacitacion">Formación continua y capacitación para equipos</option>
+                    <option value="institucional">Alianzas, auspicio o colaboración institucional</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="prereg-consents">
+                <label class="prereg-check" for="prereg-consentimiento">
+                  <input id="prereg-consentimiento" name="consentimiento" type="checkbox" required>
+                  <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">Política de Privacidad (versión 2026-11-02-v1)</a> para la gestión de mi prerregistro. <strong>(Obligatorio *)</strong></span>
+                </label>
+                <label class="prereg-check" for="prereg-marketing">
+                  <input id="prereg-marketing" name="marketing" type="checkbox">
+                  <span>Deseo recibir adicionalmente boletines e invitaciones promocionales sobre futuras actividades de COEPROTEC. <em>(Opcional)</em></span>
+                </label>
+              </div>
+
+              <div class="prereg-turnstile-wrap">
+                <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light" data-language="es"></div>
+              </div>
+
+              <div class="prereg-card-actions">
+                <button class="button button-gold" type="submit">
+                  Enviar prerregistro
+                  <svg class="link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
+                </button>
+                <a class="button button-outline" href="contacto.html">Solicitar información</a>
+              </div>
+
+              <p class="prereg-status" id="preregistro-aviso" role="status" aria-live="polite">También puedes consultar directamente por WhatsApp desde nuestra página de contacto.</p>
+            </fieldset>
+          </form>
         </div>
       </div>
     </section>
@@ -419,11 +364,11 @@
       <div class="container closing-grid">
         <div>
           <p class="section-index">MANTENGAMOS EL CONTACTO</p>
-          <h2>La próxima conversación <em>empieza aquí.</em></h2>
+          <h2>La próxima conversación<br><em>empieza aquí.</em></h2>
           <p>Consulta por eventos, capacitación o posibilidades de colaboración. Escríbenos directamente por WhatsApp.</p>
           <a class="button button-dark" href="https://wa.me/51971947284?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20COEPROTEC" target="_blank" rel="noopener noreferrer">
             Escríbenos por WhatsApp
-            <svg class="link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
+            <svg class="link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
           </a>
         </div>
       </div>
@@ -433,34 +378,32 @@
   <footer class="footer">
     <div class="container footer-grid">
       <div>
-        <span class="footer-brand">
-          <img src="img/coeprotec-isotipo.png" alt="" width="36" height="36" aria-hidden="true">
-          <span>COEPROTEC<small>FORMACIÓN CONTINUA Y EVENTOS</small></span>
-        </span>
+        <span class="footer-brand">COEPROTEC<small>FORMACIÓN CONTINUA Y EVENTOS</small></span>
         <p>Capacitación técnica y profesional, experiencias académicas y soluciones educativas.</p>
       </div>
       <div>
         <span>EXPLORAR</span>
-        <a href="index.html#nosotros">Nosotros</a>
-        <a href="index.html#soluciones">Qué hacemos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#soluciones">Qué hacemos</a>
         <a href="inscripciones.html">Próximos eventos</a>
         <a href="ponentes.html">Ponentes</a>
         <a href="coeprotec-2025.html">Edición 2025</a>
-        <a href="index.html#prerregistro">Prerregistro</a>
+        <a href="#prerregistro">Prerregistro</a>
       </div>
       <div>
         <span>CONTACTO</span>
         <a href="contacto.html">Página de contacto</a>
         <a href="https://wa.me/51971947284" target="_blank" rel="noopener noreferrer">
           Escríbenos por WhatsApp
-          <svg class="link-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
+          <svg class="link-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.1"/><path d="M9 15 15 9M9.5 9H15v5.5"/></svg>
         </a>
+        <a href="privacidad.html">Política de privacidad</a>
         <a href="#inicio">Volver arriba ↑</a>
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>© 2026 COEPROTEC · Congreso Económico de Profesionales y Técnicos.</span>
-      <span>Lima, Perú</span>
+      <span>© 2026 COEPROTEC.</span>
+      <span>Perú</span>
     </div>
   </footer>
 </body>
