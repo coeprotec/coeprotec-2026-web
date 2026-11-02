@@ -49,3 +49,66 @@
     }
   });
 })();
+
+
+// Modal de privacidad: la aceptación del documento no marca automáticamente el consentimiento.
+(() => {
+  const dialog = document.getElementById('privacy-dialog');
+  const body = document.getElementById('privacy-dialog-body');
+  if (!dialog || !body) return;
+  let loaded = false;
+  let lastTrigger = null;
+  document.querySelectorAll('[data-open-privacy]').forEach(link => link.addEventListener('click', async event => {
+    event.preventDefault();
+    event.stopPropagation();
+    lastTrigger = link;
+    dialog.showModal();
+    if (loaded) return;
+    try {
+      const response = await fetch('privacidad.html', { credentials: 'same-origin' });
+      if (!response.ok) throw new Error('No se pudo cargar el documento');
+      const documentHTML = new DOMParser().parseFromString(await response.text(), 'text/html');
+      const main = documentHTML.querySelector('.privacy-main');
+      if (!main) throw new Error('Documento no disponible');
+      main.querySelector('a[href*="#prerregistro"]')?.remove();
+      main.querySelector('h1')?.remove();
+      body.replaceChildren(...Array.from(main.children).map(node => document.importNode(node, true)));
+      loaded = true;
+    } catch (error) {
+      body.textContent = 'No se pudo cargar la información. Puedes consultarla en la página de privacidad.';
+      const fallback = document.createElement('a');
+      fallback.href = 'privacidad.html';
+      fallback.textContent = 'Ver información de privacidad';
+      body.append(document.createElement('p'), fallback);
+    }
+  }));
+  dialog.querySelectorAll('[data-close-privacy]').forEach(button => button.addEventListener('click', () => dialog.close()));
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', () => lastTrigger?.focus());
+})();
+
+// Video 2026: reproduce al entrar en pantalla; respeta bloqueo de audio del navegador.
+(() => {
+  const video = document.getElementById('video-oficial-2026');
+  if (!video) return;
+  let visible = false;
+  let audioAuthorized = false;
+  const playVisible = async () => {
+    if (!visible) return;
+    if (audioAuthorized) video.muted = false;
+    try { await video.play(); }
+    catch (_) { video.muted = true; video.play().catch(() => {}); }
+  };
+  document.addEventListener('pointerdown', () => {
+    if (!visible) return;
+    audioAuthorized = true;
+    video.muted = false;
+    playVisible();
+  }, { passive: true });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) playVisible(); else video.pause();
+    }, { threshold: 0.55 }).observe(video);
+  } else { visible = true; playVisible(); }
+})();
