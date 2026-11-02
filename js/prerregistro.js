@@ -87,44 +87,58 @@
   dialog.addEventListener('close', () => lastTrigger?.focus());
 })();
 
-// Reproducir al entrar en pantalla. Audio solo cuando el navegador permita reproducción audible.
+// Video oficial 2026: reproducción al entrar en pantalla, con audio si el navegador lo permite.
 (() => {
   const video = document.getElementById('video-oficial-2026');
-  if (!video || !('IntersectionObserver' in window)) return;
+  const button = document.getElementById('video-activar-sonido');
+  if (!video || !button) return;
+
   let visible = false;
-  const attempt = async () => {
+  let audioRequested = false;
+  const updateLabel = () => {
+    button.textContent = video.muted ? 'Activar sonido 🔊' : 'Silenciar video 🔇';
+  };
+  const playWhenVisible = async () => {
     if (!visible) return;
     try {
-      video.muted = false;
+      if (audioRequested) video.muted = false;
       await video.play();
     } catch (_) {
       video.muted = true;
       video.play().catch(() => {});
     }
+    updateLabel();
   };
-  const observer = new IntersectionObserver(entries => {
-    visible = entries[0].isIntersecting;
-    if (visible) attempt(); else video.pause();
-  }, { threshold: 0.55 });
-  observer.observe(video);
-  document.addEventListener('pointerdown', () => { if (visible) attempt(); }, { passive: true });
-})();
-
-
-// Los navegadores bloquean habitualmente el autoplay audible; control explícito.
-(() => {
-  const video = document.getElementById('video-oficial-2026');
-  const button = document.getElementById('video-activar-sonido');
-  if (!video || !button) return;
-  const update = () => { button.textContent = video.muted ? 'Activar sonido 🔊' : 'Silenciar video 🔇'; };
   button.addEventListener('click', async () => {
-    if (!video.muted) { video.muted = true; update(); return; }
+    if (!video.muted) {
+      audioRequested = false;
+      video.muted = true;
+      updateLabel();
+      return;
+    }
+    audioRequested = true;
     video.muted = false;
     video.volume = 1;
-    try { await video.play(); }
-    catch (_) { video.muted = true; }
-    update();
+    await playWhenVisible();
   });
-  video.addEventListener('volumechange', update);
-  update();
+  // La interacción con la página puede permitir audio; nunca se fuerza si el navegador lo bloquea.
+  document.addEventListener('pointerdown', event => {
+    if (visible && !button.contains(event.target) && !audioRequested) {
+      audioRequested = true;
+      playWhenVisible();
+    }
+  }, { passive: true });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) playWhenVisible();
+      else video.pause();
+    }, { threshold: 0.55 });
+    observer.observe(video);
+  } else {
+    visible = true;
+    playWhenVisible();
+  }
+  video.addEventListener('volumechange', updateLabel);
+  updateLabel();
 })();
