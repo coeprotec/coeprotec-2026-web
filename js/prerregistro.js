@@ -87,58 +87,28 @@
   dialog.addEventListener('close', () => lastTrigger?.focus());
 })();
 
-// Video oficial 2026: reproducción al entrar en pantalla, con audio si el navegador lo permite.
+// Video 2026: reproduce al entrar en pantalla; respeta bloqueo de audio del navegador.
 (() => {
   const video = document.getElementById('video-oficial-2026');
-  const button = document.getElementById('video-activar-sonido');
-  if (!video || !button) return;
-
+  if (!video) return;
   let visible = false;
-  let audioRequested = false;
-  const updateLabel = () => {
-    button.textContent = video.muted ? 'Activar sonido 🔊' : 'Silenciar video 🔇';
-  };
-  const playWhenVisible = async () => {
+  let audioAuthorized = false;
+  const playVisible = async () => {
     if (!visible) return;
-    try {
-      if (audioRequested) video.muted = false;
-      await video.play();
-    } catch (_) {
-      video.muted = true;
-      video.play().catch(() => {});
-    }
-    updateLabel();
+    if (audioAuthorized) video.muted = false;
+    try { await video.play(); }
+    catch (_) { video.muted = true; video.play().catch(() => {}); }
   };
-  button.addEventListener('click', async () => {
-    if (!video.muted) {
-      audioRequested = false;
-      video.muted = true;
-      updateLabel();
-      return;
-    }
-    audioRequested = true;
+  document.addEventListener('pointerdown', () => {
+    if (!visible) return;
+    audioAuthorized = true;
     video.muted = false;
-    video.volume = 1;
-    await playWhenVisible();
-  });
-  // La interacción con la página puede permitir audio; nunca se fuerza si el navegador lo bloquea.
-  document.addEventListener('pointerdown', event => {
-    if (visible && !button.contains(event.target) && !audioRequested) {
-      audioRequested = true;
-      playWhenVisible();
-    }
+    playVisible();
   }, { passive: true });
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(([entry]) => {
+    new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
-      if (visible) playWhenVisible();
-      else video.pause();
-    }, { threshold: 0.55 });
-    observer.observe(video);
-  } else {
-    visible = true;
-    playWhenVisible();
-  }
-  video.addEventListener('volumechange', updateLabel);
-  updateLabel();
+      if (visible) playVisible(); else video.pause();
+    }, { threshold: 0.55 }).observe(video);
+  } else { visible = true; playVisible(); }
 })();
