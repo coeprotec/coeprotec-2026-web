@@ -1,19 +1,37 @@
 const menuButton = document.getElementById('menu-button');
 const mainNav = document.getElementById('main-nav');
+const siteHeader = document.querySelector('.site-header');
+
+if (siteHeader) {
+  const onScroll = () => {
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 12);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
 
 if (menuButton && mainNav) {
   const closeMenu = () => {
     mainNav.classList.remove('is-open');
+    document.body.classList.remove('nav-open');
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', 'Abrir menú');
   };
   window.toggleMenu = () => {
     const open = mainNav.classList.toggle('is-open');
+    document.body.classList.toggle('nav-open', open);
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
   };
   mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeMenu();
+  });
+  document.addEventListener('click', event => {
+    if (mainNav.classList.contains('is-open') && !mainNav.contains(event.target) && !menuButton.contains(event.target)) {
+      closeMenu();
+    }
+  });
 }
 
 const events = Array.isArray(window.COEPROTEC_EVENTS) ? window.COEPROTEC_EVENTS : [];
@@ -41,7 +59,10 @@ if (homeAgenda && upcoming.length) {
   link.className = 'text-link light';
   link.href = 'inscripciones.html';
   link.textContent = 'Ver agenda y detalles ↗';
-  const type = document.createElement('span'); type.className='event-type event-type-light'; type.textContent = next.kind === 'aliado' ? 'EVENTO ALIADO · PARTICIPACIÓN INSTITUCIONAL' : 'EVENTO COEPROTEC'; homeAgenda.append(type, kicker, title, summary, link);
+  const type = document.createElement('span');
+  type.className = 'event-type event-type-light';
+  type.textContent = next.kind === 'aliado' ? 'EVENTO ALIADO · PARTICIPACIÓN INSTITUCIONAL' : 'EVENTO COEPROTEC';
+  homeAgenda.append(type, kicker, title, summary, link);
 }
 
 const eventsList = document.getElementById('events-list');
@@ -69,7 +90,16 @@ if (eventsList) {
       title.textContent = item.title;
       const summary = document.createElement('p');
       summary.textContent = item.summary;
-      const type = document.createElement('span'); type.className='event-type'; type.textContent=item.kind==='aliado'?'EVENTO ALIADO · '+(item.participation||'PARTICIPACIÓN INSTITUCIONAL').toUpperCase():'EVENTO COEPROTEC'; content.append(type, meta, title, summary); if(item.organizer){const org=document.createElement('p');org.className='event-organizer';org.textContent='Organiza: '+item.organizer; content.append(org);}
+      const type = document.createElement('span');
+      type.className = 'event-type';
+      type.textContent = item.kind === 'aliado' ? 'EVENTO ALIADO · ' + (item.participation || 'PARTICIPACIÓN INSTITUCIONAL').toUpperCase() : 'EVENTO COEPROTEC';
+      content.append(type, meta, title, summary);
+      if (item.organizer) {
+        const org = document.createElement('p');
+        org.className = 'event-organizer';
+        org.textContent = 'Organiza: ' + item.organizer;
+        content.append(org);
+      }
       if (item.speakersUrl && /^(?:\.\/)?[a-z0-9/_?=&%.-]+(?:#[a-z0-9_-]+)?$/i.test(item.speakersUrl)) {
         const speakers = document.createElement('a');
         speakers.className = 'text-link event-speakers-link';
@@ -103,12 +133,18 @@ if (eventsList) {
   }
 }
 
-
 // Animaciones discretas: respetar preferencia de movimiento reducido y no ocultar contenido sin JS.
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-  const targets = document.querySelectorAll('.service-card,.intro-grid,.section-head,.agenda-panel,.collaboration-grid,.speaker-showcase,.speaker-profile-card,.contact-page-grid,.event-card,.events-empty,.explain-grid,.closing-grid');
+  const targets = document.querySelectorAll('.service-card,.intro-grid,.section-head,.agenda-panel,.collaboration-grid,.speaker-showcase,.speaker-profile-card,.historic-speaker,.ally-table,.archive-video,.contact-page-grid,.event-card,.events-empty,.explain-grid,.closing-grid');
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) {entry.target.classList.add('motion-in');observer.unobserve(entry.target);}
-  }),{threshold:0.08});
-  targets.forEach((element,index)=>{element.classList.add('motion-ready');element.style.setProperty('--motion-delay',((index%4)*75)+'ms');observer.observe(element);});
+    if (entry.isIntersecting) {
+      entry.target.classList.add('motion-in');
+      observer.unobserve(entry.target);
+    }
+  }), { threshold: 0.08 });
+  targets.forEach((element, index) => {
+    element.classList.add('motion-ready');
+    element.style.setProperty('--motion-delay', ((index % 4) * 65) + 'ms');
+    observer.observe(element);
+  });
 }
