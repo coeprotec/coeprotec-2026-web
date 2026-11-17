@@ -239,7 +239,7 @@ if (eventsList) {
       }
 
       const externalRegistration =
-        item.registrationExternal === true && /^https:\/\/forms\.gle\/[A-Za-z0-9]+$/.test(item.detailsUrl || '');
+        item.registrationExternal === true && /^https:\/\/(?:forms\.gle\/[A-Za-z0-9]+|forms\.cloud\.microsoft\/Pages\/ResponsePage\.aspx\?id=[A-Za-z0-9_-]+)$/.test(item.detailsUrl || '');
       const internalDetails =
         !item.registrationExternal && /^(?:\.\/)?[a-z0-9/_?=&%.-]+$/i.test(item.detailsUrl || '');
 
@@ -250,7 +250,7 @@ if (eventsList) {
         if (externalRegistration) {
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
-          link.textContent = 'Inscribirse en formulario de EPG UPC ↗';
+          link.textContent = 'Inscribirme al evento ↗';
         } else {
           link.textContent = item.status === 'open' ? 'Ver inscripción y detalles ↗' : 'Ver detalles ↗';
         }
